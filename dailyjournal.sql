@@ -21,3 +21,17 @@ INSERT INTO `Mood` VALUES (null, "indifferent");
 INSERT INTO `Entry` VALUES (null, "07/24/2020", "HTML & CSS", "We talked about HTML components and how to make grid layouts with Flexbox in CSS.", 4);
 INSERT INTO `Entry` VALUES (null, "07/29/2020", "javascript", "Today we talked about how to link our main.js file to our project.", 1);
 INSERT INTO `Entry` VALUES (null, "08/08/2020", "javascript modules", "Today we talked about how to setup javascript modules to compartmentalize our project.", 1);
+
+
+
+SELECT
+            e.id,
+            e.date,
+            e.date,
+            e.concept,
+            e.entry,
+            e.mood_id,
+            m.label
+        FROM entry e
+        JOIN Mood m
+            ON m.id = e.mood_id;

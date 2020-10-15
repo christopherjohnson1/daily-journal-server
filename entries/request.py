@@ -1,6 +1,7 @@
 import sqlite3
 import json
 from models import Entry
+from models import Mood
 
 def get_all_entries():
     # Open a connection to the database
@@ -15,10 +16,14 @@ def get_all_entries():
         SELECT
             e.id,
             e.date,
+            e.date,
             e.concept,
             e.entry,
-            e.mood_id
+            e.mood_id,
+            m.label
         FROM entry e
+        JOIN Mood m
+            ON m.id = e.mood_id;
         """)
 
         # Initialize an empty list to hold all animal representations
@@ -36,6 +41,10 @@ def get_all_entries():
             # Animal class above.
             entry = Entry(row['id'], row['date'], row['concept'],
                             row['entry'], row['mood_id'])
+
+            mood = Mood(row['id'], row['label'])
+
+            entry.mood = mood.__dict__
 
             entries.append(entry.__dict__)
 
