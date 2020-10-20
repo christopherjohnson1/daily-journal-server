@@ -26,7 +26,7 @@ def get_all_entries():
             ON m.id = e.mood_id;
         """)
 
-        # Initialize an empty list to hold all animal representations
+        # Initialize an empty list to hold all entry representations
         entries = []
 
         # Convert rows of data into a Python list
@@ -35,10 +35,10 @@ def get_all_entries():
         # Iterate list of data returned from database
         for row in dataset:
 
-            # Create an animal instance from the current row.
+            # Create an entry instance from the current row.
             # Note that the database fields are specified in
             # exact order of the parameters defined in the
-            # Animal class above.
+            # entry class above.
             entry = Entry(row['id'], row['date'], row['concept'],
                             row['entry'], row['mood_id'])
 

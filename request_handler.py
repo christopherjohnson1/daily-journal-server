@@ -1,6 +1,7 @@
 import json
 from http.server import BaseHTTPRequestHandler, HTTPServer
 from entries import get_all_entries, get_single_entry, delete_entry
+from moods import get_all_moods
 
 
 # Here's a class. It inherits from another class.
@@ -70,11 +71,11 @@ class HandleRequests(BaseHTTPRequestHandler):
                     response = f"{get_single_entry(id)}"
                 else:
                     response = f"{get_all_entries()}"
-            elif resource == "customers":
+            elif resource == "moods":
                 if id is not None:
                     response = f"{get_single_customer(id)}"
                 else:
-                    response = f"{get_all_customers()}"
+                    response = f"{get_all_moods()}"
 
         # Response from parse_url() is a tuple with 3
         # items in it, which means the request was for
